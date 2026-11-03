@@ -1,0 +1,7 @@
+name: ops_tickets
+version: '1.0'
+profile: ops_tickets
+model-paths: [models]
+models:
+  ops_tickets:
+    +materialized: view

@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: stg_tickets
+    columns:
+      - name: id
+        tests: [unique, not_null]
+      - name: title
+        tests: [not_null]
+      - name: tags
+        tests: [not_null]
+  - name: gold_quality
+    columns:
+      - name: split
+        tests:
+          - accepted_values:
+              values: ['dev', 'heldout']
