@@ -1,0 +1,13 @@
+# pgvector arm for the serverfault benchmark (isolated from the demo container). Port 25434, data on NVMe.
+services:
+  ops-hnsw:
+    image: pgvector/pgvector:pg16
+    container_name: ops-hnsw
+    environment:
+      POSTGRES_PASSWORD: hnsw_local_only
+      POSTGRES_DB: opsfhnsw
+    ports: ["127.0.0.1:25434:5432"]
+    shm_size: 3g
+    mem_limit: 6g
+    volumes: ["${OPS_PGDATA:-./pgdata}:/var/lib/postgresql/data"]
+    command: ["postgres", "-c", "shared_buffers=512MB", "-c", "maintenance_work_mem=2GB", "-c", "max_parallel_maintenance_workers=2", "-c", "max_wal_size=4GB"]
