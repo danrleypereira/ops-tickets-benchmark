@@ -1,0 +1,10 @@
+# Python 3.11+ ; install PyTorch for your hardware first (CUDA or ROCm build), then:
+numpy
+pandas
+pyarrow
+lxml
+py7zr
+sentence-transformers
+rank-bm25       # only for the cross-check in pipeline/f7_bm25.py
+# Optional, Snowflake part:
+#   snowflake-cli (provides `snow`), dbt-snowflake, dagster
