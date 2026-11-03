@@ -1,0 +1,13 @@
+# A throwaway Postgres 16 + pgvector for the RLS demo. Listens on localhost only; no password (trust auth) because it holds nothing but the demo data.
+services:
+  pg:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "127.0.0.1:${PG_PORT:-25433}:5432"
+    shm_size: 1gb
+    volumes:
+      - rls-demo-data:/var/lib/postgresql/data
+volumes:
+  rls-demo-data:
