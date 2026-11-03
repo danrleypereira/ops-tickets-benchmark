@@ -1,0 +1,15 @@
+# Credentials come from the environment at run time (SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER, SNOWFLAKE_TOKEN); nothing secret lives in this file.
+ops_tickets:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      authenticator: programmatic_access_token
+      token: "{{ env_var('SNOWFLAKE_TOKEN') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SCHEMA', 'SERVERFAULT_DBT') }}"
+      threads: 2

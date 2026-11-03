@@ -1,0 +1,9 @@
+version: 2
+sources:
+  - name: serverfault
+    database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    schema: SERVERFAULT
+    tables:
+      - name: tickets
+        identifier: "{{ var('tickets_table', 'tickets') }}"
+      - name: gold_queries
